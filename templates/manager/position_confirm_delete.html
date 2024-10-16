@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layouts/base.html' %}
 
-</body>
-</html>
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h1>Delete position?</h1>
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
+            </div>
+            <input type="submit" value="Yes" class="btn btn-danger">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

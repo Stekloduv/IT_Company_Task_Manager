@@ -1,0 +1,59 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Sign IN {% endblock %} 
+
+{% block body_class %} sign-in-basic {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+  .input-group-outline input {
+    width: 100%;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+  }
+  .btn-custom {
+    border: none;
+    background-color: transparent;
+    color: #ffffff; /* Колір тексту */
+  }
+  .btn-custom:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Колір фону при наведенні */
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+  
+  <div class="page-header align-items-start min-vh-100" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')" loading="lazy">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container my-auto">
+      <div class="row">
+        <div class="col-lg-4 col-md-8 col-12 mx-auto">
+          <div class="card z-index-0 fadeIn3 fadeInBottom">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
+                  Logged Out
+                </h4>
+                <div class="row mt-3">
+                  <p class="mb-0 text-white text-center">
+                    {{ msg | safe }}
+                    <a class="btn btn-custom" href="/" rel="tooltip" title="Home" data-placement="bottom">
+                      Back to main
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

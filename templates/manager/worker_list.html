@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layouts/base.html' %}
 
-</body>
-</html>
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h3>
+            <a href="{% url 'manager:worker-create' %}" class="btn bg-gradient-success w-auto me-2">Create worker</a>
+            Worker List:
+          </h3>
+        </div>
+        <div class="col-lg-4 offset-lg-3">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
+      <div class="row">
+        {% if worker_list %}
+          <table class="table">
+            <tr>
+              <th>Username</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Position</th>
+            </tr>
+            {% for worker in worker_list %}
+              <tr>
+                <td>
+                  <a href="{% url 'manager:worker-detail' pk=worker.id %}">{{ worker.username }} {% if user == worker %} (Me) {% endif %}</a>
+                </td>
+                <td>{{ worker.first_name }}</td>
+                <td>{{ worker.last_name }}</td>
+                <td>{{ worker.position }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% else %}
+          <p>No workers found.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
