@@ -1,0 +1,346 @@
+[
+    {
+        "model": "manager.tasktype",
+        "pk": 1,
+        "fields": {
+            "name": "Development"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 2,
+        "fields": {
+            "name": "Testing"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 3,
+        "fields": {
+            "name": "Design"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 4,
+        "fields": {
+            "name": "Deployment"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 5,
+        "fields": {
+            "name": "Research"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 6,
+        "fields": {
+            "name": "Documentation"
+        }
+    },
+    {
+        "model": "manager.tasktype",
+        "pk": 7,
+        "fields": {
+            "name": "Maintenance"
+        }
+    },
+    {
+        "model": "manager.position",
+        "pk": 1,
+        "fields": {
+            "name": "Developer"
+        }
+    },
+    {
+        "model": "manager.position",
+        "pk": 2,
+        "fields": {
+            "name": "Tester"
+        }
+    },
+    {
+        "model": "manager.position",
+        "pk": 3,
+        "fields": {
+            "name": "Designer"
+        }
+    },
+    {
+        "model": "manager.position",
+        "pk": 4,
+        "fields": {
+            "name": "Project Manager"
+        }
+    },
+    {
+        "model": "manager.position",
+        "pk": 5,
+        "fields": {
+            "name": "Business Analyst"
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 1,
+        "fields": {
+            "username": "john_doe",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john@example.com",
+            "password": "hashed_password_1",
+            "position": 1
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 2,
+        "fields": {
+            "username": "jane_smith",
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "email": "jane@example.com",
+            "password": "hashed_password_2",
+            "position": 2
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 3,
+        "fields": {
+            "username": "bob_johnson",
+            "first_name": "Bob",
+            "last_name": "Johnson",
+            "email": "bob@example.com",
+            "password": "hashed_password_3",
+            "position": 3
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 4,
+        "fields": {
+            "username": "alice_williams",
+            "first_name": "Alice",
+            "last_name": "Williams",
+            "email": "alice@example.com",
+            "password": "hashed_password_4",
+            "position": 4
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 5,
+        "fields": {
+            "username": "charlie_brown",
+            "first_name": "Charlie",
+            "last_name": "Brown",
+            "email": "charlie@example.com",
+            "password": "hashed_password_5",
+            "position": 5
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 6,
+        "fields": {
+            "username": "dave_martin",
+            "first_name": "Dave",
+            "last_name": "Martin",
+            "email": "dave@example.com",
+            "password": "hashed_password_6",
+            "position": 1
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 7,
+        "fields": {
+            "username": "eve_clark",
+            "first_name": "Eve",
+            "last_name": "Clark",
+            "email": "eve@example.com",
+            "password": "hashed_password_7",
+            "position": 2
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 8,
+        "fields": {
+            "username": "frank_hall",
+            "first_name": "Frank",
+            "last_name": "Hall",
+            "email": "frank@example.com",
+            "password": "hashed_password_8",
+            "position": 3
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 9,
+        "fields": {
+            "username": "grace_adams",
+            "first_name": "Grace",
+            "last_name": "Adams",
+            "email": "grace@example.com",
+            "password": "hashed_password_9",
+            "position": 4
+        }
+    },
+    {
+        "model": "manager.worker",
+        "pk": 10,
+        "fields": {
+            "username": "henry_scott",
+            "first_name": "Henry",
+            "last_name": "Scott",
+            "email": "henry@example.com",
+            "password": "hashed_password_10",
+            "position": 5
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 1,
+        "fields": {
+            "name": "Implement Feature X",
+            "description": "Details about implementing feature X.",
+            "deadline": "2024-10-31T17:00:00Z",
+            "is_completed": false,
+            "priority": "urgent",
+            "task_type": 1,
+            "assignees": [1, 2],
+            "created_at": "2024-10-01T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 2,
+        "fields": {
+            "name": "Test Feature Y",
+            "description": "Ensure feature Y works as expected.",
+            "deadline": "2024-10-20T17:00:00Z",
+            "is_completed": false,
+            "priority": "high",
+            "task_type": 2,
+            "assignees": [3, 4],
+            "created_at": "2024-10-05T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 3,
+        "fields": {
+            "name": "Design UI for Feature Z",
+            "description": "Create mockups and designs for feature Z.",
+            "deadline": "2024-10-25T17:00:00Z",
+            "is_completed": true,
+            "priority": "medium",
+            "task_type": 3,
+            "assignees": [5],
+            "created_at": "2024-10-10T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 4,
+        "fields": {
+            "name": "Deploy Feature A",
+            "description": "Deploy feature A to production.",
+            "deadline": "2024-11-01T17:00:00Z",
+            "is_completed": false,
+            "priority": "high",
+            "task_type": 4,
+            "assignees": [1, 4],
+            "created_at": "2024-10-12T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 5,
+        "fields": {
+            "name": "Research on Feature B",
+            "description": "Conduct research on feature B.",
+            "deadline": "2024-10-15T17:00:00Z",
+            "is_completed": false,
+            "priority": "medium",
+            "task_type": 5,
+            "assignees": [6],
+            "created_at": "2024-10-11T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 6,
+        "fields": {
+            "name": "Update Documentation",
+            "description": "Update the documentation for the project.",
+            "deadline": "2024-10-30T17:00:00Z",
+            "is_completed": false,
+            "priority": "low",
+            "task_type": 6,
+            "assignees": [7],
+            "created_at": "2024-10-09T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 7,
+        "fields": {
+            "name": "Fix Bug in Feature C",
+            "description": "Resolve the bug found in feature C.",
+            "deadline": "2024-10-22T17:00:00Z",
+            "is_completed": false,
+            "priority": "high",
+            "task_type": 2,
+            "assignees": [8],
+            "created_at": "2024-10-08T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 8,
+        "fields": {
+            "name": "Conduct Code Review",
+            "description": "Review code for feature D.",
+            "deadline": "2024-10-29T17:00:00Z",
+            "is_completed": true,
+            "priority": "medium",
+            "task_type": 3,
+            "assignees": [1, 9],
+            "created_at": "2024-10-13T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 9,
+        "fields": {
+            "name": "Prepare Release Notes",
+            "description": "Write the release notes for the upcoming version.",
+            "deadline": "2024-11-02T17:00:00Z",
+            "is_completed": false,
+            "priority": "low",
+            "task_type": 1,
+            "assignees": [10],
+            "created_at": "2024-10-14T10:00:00Z"
+        }
+    },
+    {
+        "model": "manager.task",
+        "pk": 10,
+        "fields": {
+            "name": "Plan Next Sprint",
+            "description": "Plan the tasks and goals for the next sprint.",
+            "deadline": "2024-10-28T17:00:00Z",
+            "is_completed": false,
+            "priority": "medium",
+            "task_type": 7,
+            "assignees": [2, 3],
+            "created_at": "2024-10-15T10:00:00Z"
+        }
+    }
+]

@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+            
+          <h3><a href="{% url 'manager:task-create' %}"
+               class="btn bg-gradient-success w-auto me-2">Create task</a>Task List:
+          </h3>
+        </div>
+        <div class="col-lg-4 offset-lg-3">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
+      <div class="row">
+        {% if task_list %}
+          {% for task in task_list %}
+            <div class="col-lg-4 col-md-6 my-2">
+              <div class="card bg-light">
+                <div class="card-body">
+                  {% if task.is_completed %}
+                    <p class="btn bg-gradient-success w-auto me-2">
+                      Completed
+                    </p>
+                      {% else %}
+                    <p class="btn bg-gradient-warning w-auto me-2">
+                      Not completed
+                    </p>
+                  {% endif %}
+                  <h5 class="card-title">
+                    <a href="{% url 'manager:task-detail' pk=task.id %}"
+                       class="text-dark">{{ task.name }}</a>
+                  </h5>
+                  <p class="card-text">
+                    {{ task.description|truncatewords:20 }}
+                  </p>
+                  {% if task.priority == "Urgent" %}
+                    <p><span class="badge bg-danger">Urgent</span></p>
+                  {% elif task.priority == "High-priority" %}
+                    <p><span class="badge bg-warning">High-priority</span></p>
+                  {% elif task.priority == "Medium-priority" %}
+                    <p><span class="badge bg-info">Medium-priority</span></p>
+                  {% elif task.priority == "Low-priority" %}
+                    <p><span class="badge bg-success">Low-priority</span></p>
+                  {% endif %}
+                    <p>
+                        <i class="fas fa-user-friends me-1"></i>Assignees:
+                        {% for worker in task.assignees.all %}
+                            <a href="{% url 'manager:worker-detail' pk=worker.id %}">
+                                {{ worker.get_username }} ({{ worker.get_full_name }}){% if not forloop.last %}, {% endif %}
+                            </a>
+                        {% endfor %}
+                    </p>
+                  <p>
+                    <i class="fas fa-calendar me-1"></i>Deadline: {{ task.deadline|date:"d M Y" }}
+                  </p>
+                  <a href="{% url 'manager:task-detail' pk=task.id %}" class="text-info">Details
+                    <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>There are no tasks available.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

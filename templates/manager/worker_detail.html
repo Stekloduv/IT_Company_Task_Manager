@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h1>
+            <a href="{% url 'manager:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
+              Delete
+            </a>
+            <a href="{% url 'manager:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
+              Update
+            </a>
+          </h1>
+
+          <p><strong>First name:</strong> {{ worker.first_name }}</p>
+          <p><strong>Last name:</strong> {{ worker.last_name }}</p>
+          <p><strong>Position:</strong> {{ worker.position }}</p>
+          <p><strong>Is staff:</strong> {{ worker.is_staff }}</p>
+
+          <div class="ml-3">
+            <h4>Tasks</h4>
+
+            {% for task in worker.tasks.all %}
+              <hr>
+              <p><strong>Task Name:</strong> {{ task.name }}</p>
+              <p><strong>Task Type:</strong> {{ task.task_type.name }}</p>
+              <p class="text-muted"><strong>Id:</strong> {{ task.id }}</p>
+            {% empty %}
+              <p>No tasks assigned!</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

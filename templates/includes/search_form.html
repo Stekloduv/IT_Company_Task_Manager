@@ -1,0 +1,13 @@
+{% load crispy_forms_filters %}
+{% load static %}
+<div class="row justify-content-end">
+  <form class="form-inline-search d-flex" action="" method="get">
+    {% csrf_token %}
+    <div class="form-control">
+        {{ search_form|crispy }}
+    </div>
+    <button class="btn btn-outline-dark" id="search-btn" type="submit" value="submit">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+</div>
