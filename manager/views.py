@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+
 from manager.forms import (
     PositionForm,
     TaskForm,
@@ -204,18 +206,10 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def toggle_assign_to_task(request, pk):
-    # Отримуємо завдання за первинним ключем
     task = Task.objects.get(id=pk)
-    # Отримуємо робітника (вважаючи, що користувач є робітником)
     worker = request.user
-
-    # Перевіряємо, чи є завдання вже асигнованим робітнику
     if task.assignees.filter(id=worker.id).exists():
-        # Якщо так, видаляємо його з асигнованих
         task.assignees.remove(worker)
     else:
-        # Якщо ні, додаємо завдання до асигнованих
         task.assignees.add(worker)
-
-    # Переходимо назад на сторінку завдання
     return HttpResponseRedirect(reverse_lazy("manager:task-detail", args=[pk]))
