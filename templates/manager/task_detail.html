@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h1>
+            {{ task.name }}
+              <h1>
+            <a href="{% url 'manager:task-delete' pk=task.id %}" class="btn btn-danger link-to-page">
+              Delete
+            </a>
+            <a href="{% url 'manager:task-update' pk=task.id %}" class="btn btn-secondary link-to-page">
+              Update
+            </a>
+                  </h1>
+          </h1>
+          <p>Description: {{ task.description }}</p>
+          <p>Priority: {{ task.get_priority_display }}</p>
+          <p>Task Type: {{ task.task_type.name }}</p>
+          <p>Deadline: {{ task.deadline }}</p>
+          <p>Is Completed: {{ task.is_completed }}</p>
+          
+          <h1>Assignees</h1>
+                  {% if task in user.tasks.all %}
+            <a href="{% url 'manager:toggle_assign_to_task' pk=task.id %}" class="btn btn-danger link-to-page">
+              Remove me from this task
+            </a>
+          {% else %}
+            <a href="{% url 'manager:toggle_assign_to_task' pk=task.id %}" class="btn btn-success link-to-page">
+              Assign me to this task
+            </a>
+          {% endif %}
+          <hr>
+          <ul>
+            {% for worker in task.assignees.all %}
+              <li>{{ worker.username }} ({{ worker.first_name }} {{ worker.last_name }})</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

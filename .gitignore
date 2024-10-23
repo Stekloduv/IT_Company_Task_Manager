@@ -1,2 +1,45 @@
-.idea
-.venv
+# Created by https://www.toptal.com/developers/gitignore/api/python,django,pycharm+all
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,django,pycharm+all
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media and static files
+media/
+staticfiles/
+static/assets/
+
+### Virtual Environments ###
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### PyCharm ###
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/inspectionProfiles/
+
+### Unit test / coverage reports ###
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+
+### Jupyter Notebook ###
+.ipynb_checkpoints
+
+### Miscellaneous ###
+*.DS_Store

@@ -1,0 +1,116 @@
+<!-- Navbar -->
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <div class="container-fluid px-0">
+          <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+            IT Task Manager
+          </a>
+          <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon mt-2">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ms-auto">
+
+              <!-- Dropdown for Tasks -->
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuTasks" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="material-icons opacity-6 me-2 text-md">checklist</i>
+                  Tasks
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuTasks">
+                  <a href="{% url 'manager:task-list' %}" class="dropdown-item border-radius-md">
+                    <span>All Tasks</span>
+                  </a>
+                  <a href="{% url 'manager:task-create' %}" class="dropdown-item border-radius-md">
+                    <span>Create Task</span>
+                  </a>
+                </div>
+              </li>
+
+              <!-- Dropdown for Task Types -->
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuTaskTypes" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="material-icons opacity-6 me-2 text-md">category</i>
+                  Task Types
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuTaskTypes">
+                  <a href="{% url 'manager:task-type-list' %}" class="dropdown-item border-radius-md">
+                    <span>All Task Types</span>
+                  </a>
+                  <a href="{% url 'manager:task-type-create' %}" class="dropdown-item border-radius-md">
+                    <span>Create Task Type</span>
+                  </a>
+                </div>
+              </li>
+
+              <!-- Dropdown for Positions -->
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPositions" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="material-icons opacity-6 me-2 text-md">work</i>
+                  Positions
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPositions">
+                  <a href="{% url 'manager:position-list' %}" class="dropdown-item border-radius-md">
+                    <span>All Positions</span>
+                  </a>
+                  <a href="{% url 'manager:position-create' %}" class="dropdown-item border-radius-md">
+                    <span>Create Position</span>
+                  </a>
+                </div>
+              </li>
+
+              <!-- Dropdown for Worker -->
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuWorkers" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="material-icons opacity-6 me-2 text-md">people</i>
+                  Worker
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuWorkers">
+                  <a href="{% url 'manager:worker-list' %}" class="dropdown-item border-radius-md">
+                    <span>All Workers</span>
+                  </a>
+                  <a href="{% url 'manager:worker-create' %}" class="dropdown-item border-radius-md">
+                    <span>Create Worker</span>
+                  </a>
+                </div>
+              </li>
+
+              {% if request.user.is_authenticated %}
+                <li class="nav-item my-auto ms-3 ms-lg-0">
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn bg-gradient-danger mb-0 me-1 mt-2 mt-md-0" type="submit" style="border: none; padding: 0.5rem 1rem;">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <span class="text-sm font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</span>
+                    </button>
+                  </form>
+                </li>
+              {% else %}
+                <li class="nav-item my-auto ms-3 ms-lg-0">
+                  <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <button class="btn bg-gradient-success mb-0 me-1 mt-2 mt-md-0" type="submit" style="border: none; padding: 0.5rem 1rem;">
+                      <span class="text-sm font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign IN">Login</span>
+                    </button>
+                  </form>
+                </li>
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+    </div>
+  </div>
+</div>

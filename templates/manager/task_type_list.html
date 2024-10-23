@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Manager {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h1>
+            Task Type List
+            <a href="{% url 'manager:task-type-create' %}" class="btn bg-gradient-success w-auto me-2">
+              Create
+            </a>
+          </h1>
+
+          {% if task_type_list %}
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+
+              {% for task_type in task_type_list %}
+                <tr>
+                  <td><h3>{{ task_type.name }}</h3></td>
+                  <td>
+                    <a href="{% url 'manager:task-type-update' pk=task_type.id %}" class="btn bg-gradient-success">
+                      Update
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{% url 'manager:task-type-delete' pk=task_type.id %}" class="btn bg-gradient-danger">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </table>
+          {% else %}
+            <p>There are no task types in the service.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
